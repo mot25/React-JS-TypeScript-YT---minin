@@ -11,7 +11,7 @@ export interface INewTodo {
 }
 
 function TodoPage() {
-  const [todos, setTodos] = useState<INewTodo[]>([]);
+  const [todos, setTodos] = useState<any[]>([]);
 
   useEffect(() => {
     setTodos(JSON.parse(localStorage.getItem("todos") || "[]") as INewTodo[]);
