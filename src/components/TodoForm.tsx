@@ -1,15 +1,18 @@
 import React, { FC, KeyboardEvent, useRef } from "react";
+import { todosApi } from "../store/rtkQuery/fetchTodos";
 
-interface ITodoFormProps {
-  addHadler: (title: string) => void;
-}
-
-const TodoForm: FC<ITodoFormProps> = ({ addHadler }) => {
+const TodoForm: FC = () => {
+  const [addHadler, {}] = todosApi.useAddHadlerMutation();
   const ref = useRef<HTMLInputElement>(null);
 
   const keyPressHandler = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
-      addHadler(ref.current!.value);
+      let newTodo = {
+        id: Date.now(),
+        title: ref.current!.value,
+        completed: false
+      };
+      addHadler(newTodo);
       ref.current!.value = "";
     }
   };

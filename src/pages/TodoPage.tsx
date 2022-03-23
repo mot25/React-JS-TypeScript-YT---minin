@@ -43,7 +43,7 @@ function TodoPage() {
 
   return (
     <div>
-      {/* <TodoForm addHadler={addHadler} /> */}
+      <TodoForm />
 
       {!isLoading
         ? <TodoList

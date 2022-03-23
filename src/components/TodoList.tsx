@@ -3,16 +3,19 @@ import cn from "classnames";
 import { INewTodo } from "../pages/TodoPage";
 import { todosApi } from "../store/rtkQuery/fetchTodos";
 
-
-
 const TodoList: FC = () => {
   const { data, isLoading, error } = todosApi.useFetchUsersQuery("");
-
+  const [toggleHendler, {}] = todosApi.useToggleHendlerMutation();
+  const [deleteHendler, {}] = todosApi.useDeleteHendlerMutation();
   console.log(data);
 
   const handleDelete = (event: MouseEvent, id: number) => {
     event.preventDefault();
-    // deleteHendler(id);
+    deleteHendler(id);
+  };
+
+  const toggleCompleted = (todo: INewTodo) => {
+    toggleHendler({ ...todo, completed: !todo.completed });
   };
 
   return (
@@ -29,7 +32,7 @@ const TodoList: FC = () => {
               <label>
                 <input
                   type="checkbox"
-                  // onChange={toggleHendler.bind(null, todo.id)}
+                  onChange={() => toggleCompleted(todo)}
                   checked={todo.completed}
                 />
                 <span>

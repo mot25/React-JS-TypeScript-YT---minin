@@ -1,12 +1,18 @@
 "use strict";
 exports.__esModule = true;
 var react_1 = require("react");
-var TodoForm = function (_a) {
-    var addHadler = _a.addHadler;
+var fetchTodos_1 = require("../store/rtkQuery/fetchTodos");
+var TodoForm = function () {
+    var _a = fetchTodos_1.todosApi.useAddHadlerMutation(), addHadler = _a[0], _b = _a[1];
     var ref = react_1.useRef(null);
     var keyPressHandler = function (e) {
         if (e.key === "Enter") {
-            addHadler(ref.current.value);
+            var newTodo = {
+                id: Date.now(),
+                title: ref.current.value,
+                completed: false
+            };
+            addHadler(newTodo);
             ref.current.value = "";
         }
     };

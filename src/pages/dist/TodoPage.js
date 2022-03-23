@@ -1,6 +1,7 @@
 "use strict";
 exports.__esModule = true;
 var react_1 = require("react");
+var TodoForm_1 = require("../components/TodoForm");
 var TodoList_1 = require("../components/TodoList");
 var fetchTodos_1 = require("../store/rtkQuery/fetchTodos");
 function TodoPage() {
@@ -29,11 +30,13 @@ function TodoPage() {
     //     setTodos(prev => prev.filter(todo => todo.id !== id));
     //   }
     // };
-    return (react_1["default"].createElement("div", null, !isLoading
-        ? react_1["default"].createElement(TodoList_1["default"]
-        // toggleHendler={toggleHendler}
-        // deleteHendler={deleteHendler}
-        , null)
-        : react_1["default"].createElement("h1", null, "todos empty")));
+    return (react_1["default"].createElement("div", null,
+        react_1["default"].createElement(TodoForm_1["default"], null),
+        !isLoading
+            ? react_1["default"].createElement(TodoList_1["default"]
+            // toggleHendler={toggleHendler}
+            // deleteHendler={deleteHendler}
+            , null)
+            : react_1["default"].createElement("h1", null, "todos empty")));
 }
 exports["default"] = TodoPage;

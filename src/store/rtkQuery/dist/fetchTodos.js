@@ -14,6 +14,29 @@ exports.todosApi = react_1.createApi({
                 url: "/todos"
             }); },
             providesTags: function (result) { return ["todos"]; }
+        }),
+        addHadler: build.mutation({
+            query: function (todo) { return ({
+                url: "/todos",
+                method: "POST",
+                body: todo
+            }); },
+            invalidatesTags: ["todos"]
+        }),
+        toggleHendler: build.mutation({
+            query: function (todo) { return ({
+                url: "/todos/" + todo.id,
+                method: "PUT",
+                body: todo
+            }); },
+            invalidatesTags: ["todos"]
+        }),
+        deleteHendler: build.mutation({
+            query: function (id) { return ({
+                url: "/todos/" + id,
+                method: "DELETE"
+            }); },
+            invalidatesTags: ["todos"]
         })
     }); }
 });

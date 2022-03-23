@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-  
-};
+const initialState = {};
 
 export const reducerSlice = createSlice({
   name: "reducer",
   initialState,
-  reducers: {}
+  reducers: {
+    
+  }
 });
 
 export default reducerSlice.reducer;

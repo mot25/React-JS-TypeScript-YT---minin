@@ -13,6 +13,29 @@ export const todosApi = createApi({
         url: "/todos"
       }),
       providesTags: (result) => ["todos"]
+    }),
+    addHadler: build.mutation<INewTodo, INewTodo>({
+      query: (todo) => ({
+        url: "/todos",
+        method: "POST",
+        body: todo
+      }),
+      invalidatesTags: ["todos"]
+    }),
+    toggleHendler: build.mutation<INewTodo, INewTodo>({
+      query: (todo) => ({
+        url: `/todos/${todo.id}`,
+        method: "PUT",
+        body: todo
+      }),
+      invalidatesTags: ["todos"]
+    }),
+    deleteHendler: build.mutation<INewTodo, number>({
+      query: (id: number) => ({
+        url: `/todos/${id}`,
+        method: "DELETE"
+      }),
+      invalidatesTags: ["todos"]
     })
   })
 });
