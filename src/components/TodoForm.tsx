@@ -1,4 +1,4 @@
-import React, {  FC, KeyboardEvent, useRef } from "react";
+import React, { FC, KeyboardEvent, useRef } from "react";
 
 interface ITodoFormProps {
   addHadler: (title: string) => void;
@@ -7,11 +7,10 @@ interface ITodoFormProps {
 const TodoForm: FC<ITodoFormProps> = ({ addHadler }) => {
   const ref = useRef<HTMLInputElement>(null);
 
-
   const keyPressHandler = (e: KeyboardEvent) => {
     if (e.key === "Enter") {
       addHadler(ref.current!.value);
-      ref.current!.value = ''
+      ref.current!.value = "";
     }
   };
 
@@ -25,7 +24,7 @@ const TodoForm: FC<ITodoFormProps> = ({ addHadler }) => {
         placeholder="input name todo"
         onKeyPress={keyPressHandler}
       />
-      <label htmlFor="title" className="active"> 
+      <label htmlFor="title" className="active">
         input name todo
       </label>
     </div>

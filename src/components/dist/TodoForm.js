@@ -7,7 +7,7 @@ var TodoForm = function (_a) {
     var keyPressHandler = function (e) {
         if (e.key === "Enter") {
             addHadler(ref.current.value);
-            ref.current.value = '';
+            ref.current.value = "";
         }
     };
     return (react_1["default"].createElement("div", { className: "input-field" },

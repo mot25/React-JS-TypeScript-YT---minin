@@ -1,14 +1,19 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import  reducerSlice  from "./reducer/reducerSlice";
+import { todosApi } from "./rtkQuery/fetchTodos";
 
 export const rootReducer = combineReducers({
-  first: reducerSlice
+  first: reducerSlice,
+  [todosApi.reducerPath]: todosApi.reducer
 });
 
 export const setupStore = () => {
   return configureStore({
-    reducer: rootReducer
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) => {
+      return getDefaultMiddleware().concat(todosApi.middleware)
+    }
   });
 };
 
